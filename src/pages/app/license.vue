@@ -12,7 +12,8 @@
 
     <div class="grid gap-5 lg:grid-cols-2">
       <form
-        class="flex flex-col rounded-3xl border border-neutral-700 bg-neutral-950 p-5 md:p-7"
+        id="bind-license"
+        class="flex scroll-mt-24 flex-col rounded-3xl border border-neutral-700 bg-neutral-950 p-5 md:p-7"
         @submit.prevent="redeem"
       >
         <div class="flex items-center gap-3">
@@ -83,7 +84,8 @@
       </form>
 
       <form
-        class="flex flex-col rounded-3xl border border-neutral-700 bg-neutral-950 p-5 md:p-7"
+        id="reset-license"
+        class="flex scroll-mt-24 flex-col rounded-3xl border border-neutral-700 bg-neutral-950 p-5 md:p-7"
         @submit.prevent="unbind"
       >
         <div class="flex items-center gap-3">
@@ -91,8 +93,8 @@
             <Icon name="lucide:unlink" :size="22" />
           </div>
           <div>
-            <h2 class="text-xl font-semibold">解除绑定</h2>
-            <p class="text-default-font/45 mt-0.5 text-sm">解绑后兑换码可以重新绑定其他面板</p>
+            <h2 class="text-xl font-semibold">重置授权</h2>
+            <p class="text-default-font/45 mt-0.5 text-sm">解除当前绑定后可重新绑定其他面板</p>
           </div>
         </div>
 

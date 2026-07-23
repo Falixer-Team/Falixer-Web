@@ -150,6 +150,49 @@
       </Transition>
     </section>
 
+    <section class="mx-auto mt-8 max-w-3xl border-y border-neutral-700">
+      <div class="grid sm:grid-cols-2 sm:divide-x sm:divide-neutral-700">
+        <NuxtLink
+          to="/app/license#bind-license"
+          class="group flex min-h-28 items-center justify-between gap-4 border-b border-neutral-700 px-4 py-5 transition-colors hover:bg-neutral-900/60 sm:border-b-0 sm:px-6"
+        >
+          <div class="flex items-center gap-4">
+            <span class="bg-brand-700 text-brand-100 flex size-10 shrink-0 items-center justify-center rounded-lg">
+              <Icon name="lucide:link" :size="20" />
+            </span>
+            <div>
+              <h2 class="font-semibold">绑定授权</h2>
+              <p class="text-default-font/45 mt-1 text-sm leading-6">
+                使用兑换码绑定面板域名或 IP
+              </p>
+            </div>
+          </div>
+          <Icon name="lucide:arrow-right" :size="18" class="text-default-font/35 shrink-0 transition-transform group-hover:translate-x-1" />
+        </NuxtLink>
+
+        <NuxtLink
+          to="/app/license#reset-license"
+          class="group flex min-h-28 items-center justify-between gap-4 px-4 py-5 transition-colors hover:bg-neutral-900/60 sm:px-6"
+        >
+          <div class="flex items-center gap-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-error-0 text-error-200">
+              <Icon name="lucide:refresh-cw" :size="20" />
+            </span>
+            <div>
+              <h2 class="font-semibold">重置授权</h2>
+              <p class="text-default-font/45 mt-1 text-sm leading-6">
+                解除当前绑定后重新绑定新面板
+              </p>
+            </div>
+          </div>
+          <Icon name="lucide:arrow-right" :size="18" class="text-default-font/35 shrink-0 transition-transform group-hover:translate-x-1" />
+        </NuxtLink>
+      </div>
+      <p class="text-default-font/40 border-t border-neutral-700 px-4 py-3 text-xs leading-5 sm:px-6">
+        绑定和重置需要登录已验证的 Falixer 账户。重置时须提供原兑换码、绑定邮箱和当前面板地址。
+      </p>
+    </section>
+
     <section class="mx-auto mt-8 grid max-w-3xl gap-3 sm:grid-cols-2">
       <div class="rounded-2xl border border-neutral-700 bg-neutral-900/45 p-5">
         <Icon name="lucide:user-round-check" :size="20" class="text-brand-50" />
