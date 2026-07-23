@@ -1,0 +1,310 @@
+@theme {
+  /* === COLORS === */
+  /* Brand Colors */
+  --color-brand-0: rgb(242, 242, 255);
+  --color-brand-50: rgb(91, 91, 214);
+  --color-brand-100: rgb(77, 77, 194);
+  --color-brand-200: rgb(65, 65, 174);
+  --color-brand-300: rgb(55, 55, 151);
+  --color-brand-400: rgb(47, 47, 128);
+  --color-brand-500: rgb(40, 40, 108);
+  --color-brand-600: rgb(226, 226, 255);
+  --color-brand-700: rgb(234, 234, 255);
+  --color-brand-800: rgb(242, 242, 255);
+  --color-brand-900: rgb(248, 248, 255);
+
+  /* Neutral Colors */
+  --color-neutral-0: rgb(8, 17, 31);
+  --color-neutral-50: rgb(14, 25, 43);
+  --color-neutral-100: rgb(28, 42, 62);
+  --color-neutral-200: rgb(48, 63, 84);
+  --color-neutral-300: rgb(76, 91, 112);
+  --color-neutral-400: rgb(103, 117, 136);
+  --color-neutral-500: rgb(148, 160, 176);
+  --color-neutral-600: rgb(205, 214, 224);
+  --color-neutral-700: rgb(224, 230, 237);
+  --color-neutral-800: rgb(238, 242, 247);
+  --color-neutral-900: rgb(248, 248, 250);
+  --color-neutral-950: rgb(255, 255, 255);
+
+  /* Error Colors */
+  --color-error-0: rgb(254, 235, 247);
+  --color-error-50: rgb(246, 92, 182);
+  --color-error-100: rgb(227, 75, 169);
+  --color-error-200: rgb(214, 64, 159);
+  --color-error-300: rgb(167, 24, 115);
+  --color-error-400: rgb(122, 29, 90);
+  --color-error-500: rgb(96, 29, 72);
+  --color-error-600: rgb(80, 27, 63);
+  --color-error-700: rgb(69, 26, 55);
+  --color-error-800: rgb(58, 24, 47);
+  --color-error-900: rgb(58, 24, 47);
+
+  /* Warning Colors */
+  --color-warning-0: rgb(255, 250, 209);
+  --color-warning-50: rgb(240, 192, 0);
+  --color-warning-100: rgb(255, 239, 92);
+  --color-warning-200: rgb(245, 217, 10);
+  --color-warning-300: rgb(112, 94, 0);
+  --color-warning-400: rgb(89, 74, 5);
+  --color-warning-500: rgb(73, 60, 0);
+  --color-warning-600: rgb(62, 48, 0);
+  --color-warning-700: rgb(53, 40, 0);
+  --color-warning-800: rgb(44, 33, 0);
+  --color-warning-900: rgb(44, 33, 0);
+
+  /* Success Colors */
+  --color-success-0: rgb(229, 251, 235);
+  --color-success-50: rgb(76, 195, 138);
+  --color-success-100: rgb(60, 177, 121);
+  --color-success-200: rgb(48, 164, 108);
+  --color-success-300: rgb(35, 110, 74);
+  --color-success-400: rgb(27, 84, 58);
+  --color-success-500: rgb(22, 68, 48);
+  --color-success-600: rgb(19, 57, 41);
+  --color-success-700: rgb(17, 49, 35);
+  --color-success-800: rgb(15, 41, 30);
+  --color-success-900: rgb(15, 41, 30);
+
+  /* Semantic Colors */
+  --color-brand-primary: rgb(91, 91, 214);
+  --color-default-font: rgb(14, 25, 43);
+  --color-subtext-color: rgb(103, 117, 136);
+  --color-neutral-border: rgb(224, 230, 237);
+  --color-black: rgb(8, 17, 31);
+  --color-default-background: rgb(255, 255, 255);
+
+  /* === TYPOGRAPHY === */
+  /* Font Families */
+  --font-caption:
+    'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-caption-bold:
+    'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-body:
+    'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-body-bold:
+    'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-h3:
+    'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-h2:
+    'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-h1:
+    'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    'Noto Sans SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-monospace-body:
+    'Roboto Mono', ui-monospace, SFMono-Regular, 'SF Mono', Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+
+  /* Font Sizes */
+  --font-size-caption: 12px;
+  --line-height-caption: 16px;
+  --font-weight-caption: 400;
+  --letter-spacing-caption: 0em;
+
+  --font-size-caption-bold: 12px;
+  --line-height-caption-bold: 16px;
+  --font-weight-caption-bold: 500;
+  --letter-spacing-caption-bold: 0em;
+
+  --font-size-body: 16px;
+  --line-height-body: 20px;
+  --font-weight-body: 400;
+  --letter-spacing-body: 0em;
+
+  --font-size-body-bold: 16px;
+  --line-height-body-bold: 20px;
+  --font-weight-body-bold: 600;
+  --letter-spacing-body-bold: 0em;
+
+  --font-size-h3: 16px;
+  --line-height-h3: 20px;
+  --font-weight-h3: 600;
+  --letter-spacing-h3: 0em;
+
+  --font-size-h2: 20px;
+  --line-height-h2: 24px;
+  --font-weight-h2: 600;
+  --letter-spacing-h2: 0em;
+
+  --font-size-h1: 30px;
+  --line-height-h1: 36px;
+  --font-weight-h1: 600;
+  --letter-spacing-h1: 0em;
+
+  --font-size-display: 60px;
+  --line-height-display: 72px;
+  --font-weight-display: 600;
+  --letter-spacing-display: 0em;
+
+  --font-size-monospace-body: 14px;
+  --line-height-monospace-body: 20px;
+  --font-weight-monospace-body: 400;
+  --letter-spacing-monospace-body: 0em;
+
+  /* === SPACING === */
+  --spacing-112: 28rem;
+  --spacing-144: 36rem;
+  --spacing-192: 48rem;
+  --spacing-256: 64rem;
+  --spacing-320: 80rem;
+
+  /* === BORDER RADIUS === */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-DEFAULT: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* === BOX SHADOWS === */
+  --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --shadow-DEFAULT: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --shadow-md:
+    0px 4px 16px -2px rgba(0, 0, 0, 0.08), 0px 2px 4px -1px rgba(0, 0, 0, 0.08);
+  --shadow-lg:
+    0px 12px 32px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -2px rgba(0, 0, 0, 0.08);
+  --shadow-overlay:
+    0px 12px 32px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -2px rgba(0, 0, 0, 0.08);
+
+  /* === BREAKPOINTS === */
+  --breakpoint-mobile: 767px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* === CONTAINERS === */
+  --container-padding: 24px;
+  --container-max-width: 1280px;
+}
+
+html[data-theme='dark'] {
+  --color-brand-0: rgb(218, 246, 255);
+  --color-brand-50: rgb(56, 189, 248);
+  --color-brand-100: rgb(14, 165, 233);
+  --color-brand-200: rgb(2, 132, 199);
+  --color-brand-300: rgb(7, 89, 133);
+  --color-brand-400: rgb(12, 74, 110);
+  --color-brand-500: rgb(14, 56, 82);
+  --color-brand-600: rgb(8, 47, 73);
+  --color-brand-700: rgb(7, 37, 59);
+  --color-brand-800: rgb(7, 30, 48);
+  --color-brand-900: rgb(7, 23, 38);
+
+  --color-neutral-0: rgb(248, 250, 252);
+  --color-neutral-50: rgb(241, 245, 249);
+  --color-neutral-100: rgb(226, 232, 240);
+  --color-neutral-200: rgb(203, 213, 225);
+  --color-neutral-300: rgb(148, 163, 184);
+  --color-neutral-400: rgb(100, 116, 139);
+  --color-neutral-500: rgb(71, 85, 105);
+  --color-neutral-600: rgb(38, 52, 72);
+  --color-neutral-700: rgb(28, 42, 62);
+  --color-neutral-800: rgb(16, 29, 48);
+  --color-neutral-900: rgb(10, 19, 34);
+  --color-neutral-950: rgb(7, 11, 20);
+
+  --color-default-font: rgb(241, 245, 249);
+  --color-subtext-color: rgb(148, 163, 184);
+  --color-neutral-border: rgb(28, 42, 62);
+  --color-black: rgb(7, 11, 20);
+  --color-default-background: rgb(7, 11, 20);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.25);
+  --shadow-md: 0 12px 32px -12px rgb(0 0 0 / 0.7);
+  --shadow-lg: 0 24px 64px -20px rgb(0 0 0 / 0.8);
+  --shadow-overlay: 0 24px 64px -20px rgb(0 0 0 / 0.85);
+}
+
+/* === UTILITY CLASSES === */
+@utility caption {
+  font-family: var(--font-caption);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  font-weight: var(--font-weight-caption);
+  letter-spacing: var(--letter-spacing-caption);
+}
+
+@utility caption-bold {
+  font-family: var(--font-caption-bold);
+  font-size: var(--font-size-caption-bold);
+  line-height: var(--line-height-caption-bold);
+  font-weight: var(--font-weight-caption-bold);
+  letter-spacing: var(--letter-spacing-caption-bold);
+}
+
+@utility body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-body);
+  letter-spacing: var(--letter-spacing-body);
+}
+
+@utility body-bold {
+  font-family: var(--font-body-bold);
+  font-size: var(--font-size-body-bold);
+  line-height: var(--line-height-body-bold);
+  font-weight: var(--font-weight-body-bold);
+  letter-spacing: var(--letter-spacing-body-bold);
+}
+
+@utility h3 {
+  font-family: var(--font-h3);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: var(--font-weight-h3);
+  letter-spacing: var(--letter-spacing-h3);
+}
+
+@utility h2 {
+  font-family: var(--font-h2);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: var(--font-weight-h2);
+  letter-spacing: var(--letter-spacing-h2);
+}
+
+@utility h1 {
+  font-family: var(--font-h1);
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: var(--font-weight-h1);
+  letter-spacing: var(--letter-spacing-h1);
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-display);
+  font-weight: var(--font-weight-display);
+  letter-spacing: var(--letter-spacing-display);
+}
+
+@utility monospace-body {
+  font-family: var(--font-monospace-body);
+  font-size: var(--font-size-monospace-body);
+  line-height: var(--line-height-monospace-body);
+  font-weight: var(--font-weight-monospace-body);
+  letter-spacing: var(--letter-spacing-monospace-body);
+}
+
+/* === CONTAINER STYLES === */
+@layer base {
+  .container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+}
+
+/* === CUSTOM VARIANTS === */
+@custom-variant mobile {
+  @media (max-width: 767px) {
+    @slot;
+  }
+}

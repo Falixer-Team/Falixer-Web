@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+@import './theme.css';
+@plugin '@igorkowalczyk/is-browser';
+
+html {
+  @apply font-body text-default-font bg-neutral-950;
+  color-scheme: light;
+  background-image:
+    radial-gradient(
+      circle at 50% -10%,
+      rgb(91 91 214 / 0.055),
+      transparent 34rem
+    ),
+    linear-gradient(rgb(8 17 31 / 0.012) 1px, transparent 1px);
+  background-size:
+    auto,
+    100% 8px;
+  font-synthesis: none;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  background-image:
+    radial-gradient(
+      circle at 14% 10%,
+      rgb(56 189 248 / 0.12),
+      transparent 34rem
+    ),
+    linear-gradient(rgb(148 163 184 / 0.025) 1px, transparent 1px);
+}
+
+.theme-icon-sun,
+.theme-label-light {
+  display: none;
+}
+
+html[data-theme='dark'] .theme-icon-sun,
+html[data-theme='dark'] .theme-label-light {
+  display: inline-flex;
+}
+
+html[data-theme='dark'] .theme-icon-moon,
+html[data-theme='dark'] .theme-label-dark {
+  display: none;
+}
+
+body {
+  min-width: 320px;
+}
+
+::selection {
+  color: white;
+  background: var(--color-brand-50);
+}
+
+h1 {
+  @apply h1;
+}
+
+h2 {
+  @apply h2;
+}
+
+h3 {
+  @apply h3;
+}
+
+:root {
+  --nav-offset: 0;
+  --extend-footer: 0;
+}
+
+.text-link {
+  @apply hover:text-brand-50 underline transition-colors;
+}
+
+.bg-stripes {
+  background: linear-gradient(
+    45deg,
+    color-mix(in srgb, var(--color-brand-50) 12%, transparent) 0.5px,
+    transparent 0.5px,
+    transparent calc(50% - 0.5px),
+    color-mix(in srgb, var(--color-brand-50) 12%, transparent) calc(50% - 0.5px),
+    color-mix(in srgb, var(--color-brand-50) 12%, transparent) calc(50% + 0.5px),
+    transparent calc(50% + 0.5px),
+    transparent calc(100% - 0.5px),
+    color-mix(in srgb, var(--color-brand-50) 12%, transparent)
+      calc(100% - 0.5px)
+  );
+  background-size: 36px 36px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+.prose-content > *:first-child,
+.prose-content p *:first-child,
+.prose-content p > a > *:first-child {
+  margin-top: 0 !important;
+}
+.prose-content > *:last-child,
+.prose-content p > *:last-child,
+.prose-content p > a > *:last-child {
+  margin-bottom: 0 !important;
+}
+.prose-content > p + p,
+.prose-content > * > p + p {
+  margin-top: 12px;
+}
+
+.scrollbar-none {
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: 0px;
+  }
+}
+
+.marquee {
+  mask: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.turnstile-wrapper div {
+  display: flex !important;
+}
+
+.tally-popup[class*='tally-form-'] div {
+  border-radius: 16px;
+}
