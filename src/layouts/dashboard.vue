@@ -39,6 +39,19 @@
               </NuxtLink>
               <NuxtLink
                 v-if="user?.email_pending == null"
+                to="/app/license"
+                aria-label="授权中心"
+                class="text-default-font/50 hover:text-brand-50 flex-col items-center p-2 transition-colors hover:bg-neutral-800"
+                :class="{
+                  'text-default-font!':
+                    route.path == '/app/license' ||
+                    route.path.startsWith('/app/license/'),
+                }"
+              >
+                <Icon name="lucide:key-round" :size="20" mode="svg" />
+              </NuxtLink>
+              <NuxtLink
+                v-if="user?.email_pending == null"
                 to="/app/extensions"
                 class="text-default-font/50 hover:text-brand-50 flex-col items-center p-2 transition-colors hover:bg-neutral-800"
                 :class="{
@@ -109,6 +122,20 @@
             @mousedown.prevent
           >
             <Icon name="memory:account-box" :size="24" />
+          </NuxtLink>
+          <NuxtLink
+            v-if="user?.email_pending == null"
+            to="/app/license"
+            aria-label="授权中心"
+            class="text-default-font/50 hover:text-brand-50 focus:text-brand-50 flex w-full flex-col items-center py-4 outline-0 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
+            :class="{
+              'text-default-font!':
+                route.path == '/app/license' ||
+                route.path.startsWith('/app/license/'),
+            }"
+            @mousedown.prevent
+          >
+            <Icon name="lucide:key-round" :size="24" />
           </NuxtLink>
           <NuxtLink
             v-if="user?.email_pending == null"

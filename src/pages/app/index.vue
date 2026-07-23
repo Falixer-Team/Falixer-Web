@@ -23,6 +23,19 @@
       </span>
     </NuxtLink>
     <NuxtLink
+      to="/app/license"
+      class="hover:text-brand-50 focus:text-brand-50 space-y-2 bg-neutral-950 p-4 outline-0 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
+      @mousedown.prevent
+    >
+      <div class="flex items-center gap-1.5">
+        <Icon name="lucide:key-round" :size="28" mode="svg" />
+        <span class="text-xl font-bold">授权中心</span>
+      </div>
+      <span class="text-default-font/75">
+        使用兑换码绑定授权，或解除现有面板绑定
+      </span>
+    </NuxtLink>
+    <NuxtLink
       to="/app/extensions"
       class="hover:text-brand-50 focus:text-brand-50 space-y-2 bg-neutral-950 p-4 outline-0 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
       @mousedown.prevent
@@ -48,7 +61,6 @@
         View statistics, customize graphs, extension statistics
       </span>
     </NuxtLink>
-    <div v-if="isDesktop" class="bg-stripes transition-colors" />
   </div>
 </template>
 
@@ -59,5 +71,4 @@ definePageMeta({
 })
 
 const { user } = useAuth()
-const isDesktop = useMediaQuery('(min-width: 768px)')
 </script>

@@ -1,3 +1,7 @@
+packages:
+  - '.'
+  - 'licences-site'
+
 minimumReleaseAge: 1440
 onlyBuiltDependencies:
   - '@parcel/watcher'

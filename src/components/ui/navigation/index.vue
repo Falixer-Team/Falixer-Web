@@ -12,7 +12,6 @@
           <UiNavigationLink to="/browse" label="插件" />
           <UiNavigationLink to="/guides" label="指南" />
           <UiNavigationLink to="/docs" label="文档" />
-          <UiNavigationLink to="/license" label="授权查询" />
           <UiNavigationLink
             to="https://hcb.hackclub.com/donations/start/blueprint"
             target="_blank"
@@ -121,12 +120,6 @@
           <UiNavigationMobilelink
             to="/docs"
             label="文档"
-            :visible="mobileNavigation"
-            @click="closeMobileNavigation"
-          />
-          <UiNavigationMobilelink
-            to="/license"
-            label="授权查询"
             :visible="mobileNavigation"
             @click="closeMobileNavigation"
           />
