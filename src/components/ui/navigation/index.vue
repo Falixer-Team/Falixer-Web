@@ -7,11 +7,16 @@
   >
     <div class="container py-4">
       <div class="relative flex items-center justify-between">
-        <BrandWordmark @click="mobileNavigation = false" />
+        <BrandWordmark @click="closeMobileNavigation" />
         <div class="hidden items-center justify-between gap-1 text-sm md:flex">
           <UiNavigationLink to="/browse" label="插件" />
           <UiNavigationLink to="/guides" label="指南" />
           <UiNavigationLink to="/docs" label="文档" />
+          <UiNavigationLink
+            to="https://hcb.hackclub.com/donations/start/blueprint"
+            target="_blank"
+            label="捐赠"
+          />
           <span class="mx-2 h-4 w-px bg-neutral-700"></span>
           <button
             type="button"
@@ -38,7 +43,6 @@
               <NuxtLink
                 to="/app"
                 class="hover:text-brand-50 focus:text-brand-50 flex min-h-8 items-center gap-1 rounded-full px-3 outline-0 transition-colors hover:bg-neutral-900"
-                @mousedown.prevent
               >
                 <Icon name="memory:account" />
                 <span> {{ user?.name }} </span>
@@ -50,7 +54,6 @@
                 @click="logout"
                 tabindex="0"
                 class="flex min-h-[26px] cursor-pointer items-center bg-neutral-900 px-2.5 py-0.5 outline-0 transition-colors hover:bg-red-950 hover:text-red-400 focus:bg-red-950 focus:text-red-400"
-                @mousedown.prevent
               >
                 <Icon name="memory:logout" mode="svg" />
               </NuxtLink>
@@ -59,14 +62,12 @@
               <NuxtLink
                 to="/auth"
                 class="hover:text-brand-50 focus:text-brand-50 rounded-full px-3 py-1.5 outline-0 transition-colors hover:bg-neutral-900"
-                @mousedown.prevent
               >
                 <span>登录</span>
               </NuxtLink>
               <NuxtLink
                 to="/auth/register"
                 class="flex items-center gap-1 rounded-full bg-neutral-50 px-4 py-1.5 text-neutral-950 outline-0 transition-transform hover:-translate-y-0.5"
-                @mousedown.prevent
               >
                 <span>注册</span>
                 <Icon name="memory:chevron-right" />
@@ -75,9 +76,11 @@
           </client-only>
         </div>
         <button
+          type="button"
           @click="mobileNavigation = !mobileNavigation"
-          alt="Toggle navigation menu"
-          class="block md:hidden"
+          :aria-expanded="mobileNavigation"
+          aria-label="切换导航菜单"
+          class="relative z-10 block cursor-pointer md:hidden"
         >
           <Icon
             :name="
@@ -99,34 +102,39 @@
       >
         <div
           v-show="mobileNavigation"
-          @click="mobileNavigation = false"
-          class="absolute pt-10 md:hidden"
+          class="pointer-events-auto absolute left-[var(--container-padding)] z-10 pt-10 md:hidden"
+          @click.stop
         >
           <UiNavigationMobilelink
             to="/browse"
             label="插件"
             :visible="mobileNavigation"
+            @click="closeMobileNavigation"
           />
           <UiNavigationMobilelink
             to="/guides"
             label="指南"
             :visible="mobileNavigation"
+            @click="closeMobileNavigation"
           />
           <UiNavigationMobilelink
             to="/docs"
             label="文档"
             :visible="mobileNavigation"
+            @click="closeMobileNavigation"
           />
           <UiNavigationMobilelink
             to="https://hcb.hackclub.com/donations/start/blueprint"
             target="_blank"
             label="捐赠"
             :visible="mobileNavigation"
+            @click="closeMobileNavigation"
           />
           <button
             type="button"
             data-theme-toggle
             class="mt-5 flex w-[calc(100vw-2rem)] max-w-80 items-center justify-between rounded-2xl border border-neutral-700 bg-neutral-900 p-3 text-start"
+            @click="closeMobileNavigation"
           >
             <span class="theme-label-dark">夜间模式</span>
             <span class="theme-label-light">日间模式</span>
@@ -171,11 +179,12 @@
                       ? 'text-default-font'
                       : 'text-default-font/60'
                   "
+                  @click="closeMobileNavigation"
                 >
                   <span>仪表盘</span>
                 </NuxtLink>
                 <NuxtLink
-                  @click="logout"
+                  @click="handleLogout"
                   class="text-default-font/60 block w-full cursor-pointer text-start transition-colors hover:text-red-400"
                 >
                   <span>退出登录</span>
@@ -187,11 +196,13 @@
                 to="/auth"
                 label="登录"
                 :visible="mobileNavigation"
+                @click="closeMobileNavigation"
               />
               <UiNavigationMobilelink
                 to="/auth/register"
                 label="注册"
                 :visible="mobileNavigation"
+                @click="closeMobileNavigation"
               />
             </template>
           </client-only>
@@ -213,6 +224,13 @@ const { isAuthenticated, user, logout } = useAuth()
 const route = useRoute()
 
 const mobileNavigation = ref(false)
+const closeMobileNavigation = () => {
+  mobileNavigation.value = false
+}
+const handleLogout = () => {
+  closeMobileNavigation()
+  logout()
+}
 
 watch(mobileNavigation, (isOpen) => {
   if (isOpen) {
@@ -220,6 +238,15 @@ watch(mobileNavigation, (isOpen) => {
   } else {
     document.body.style.overflow = ''
   }
+})
+
+watch(
+  () => route.fullPath,
+  () => closeMobileNavigation(),
+)
+
+onBeforeUnmount(() => {
+  document.body.style.overflow = ''
 })
 </script>
 

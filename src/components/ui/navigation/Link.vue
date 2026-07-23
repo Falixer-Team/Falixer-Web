@@ -1,12 +1,11 @@
 <template>
-  <NuxtLink :to="props.to" :target="props.target" class="group outline-0">
-    <ElementsButtonSmall
-      :label="props.label"
-      :class="props.class"
-      class="cursor-pointer group-focus:border-white"
-      tabindex="-1"
-      @mousedown.prevent
-    />
+  <NuxtLink
+    :to="props.to"
+    :target="props.target"
+    :class="props.class"
+    class="hover:text-brand-50 focus-visible:border-neutral-500 flex cursor-pointer items-center rounded-full border border-neutral-700 bg-neutral-900 px-2.5 py-0.5 text-sm outline-none transition-colors hover:bg-neutral-800"
+  >
+    {{ props.label }}
   </NuxtLink>
 </template>
 

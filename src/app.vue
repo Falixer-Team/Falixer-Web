@@ -21,7 +21,7 @@ const themeInit = `(() => {
   };
   try {
     const saved = localStorage.getItem(key);
-    apply(saved === 'light' || saved === 'dark' ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    apply(saved === 'light' || saved === 'dark' ? saved : 'light');
   } catch (_) { apply('light'); }
   document.addEventListener('click', (event) => {
     if (!(event.target instanceof Element) || !event.target.closest('[data-theme-toggle]')) return;
