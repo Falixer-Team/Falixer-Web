@@ -130,27 +130,6 @@
             :visible="mobileNavigation"
             @click="closeMobileNavigation"
           />
-          <button
-            type="button"
-            data-theme-toggle
-            class="mt-5 flex w-[calc(100vw-2rem)] max-w-80 items-center justify-between rounded-2xl border border-neutral-700 bg-neutral-900 p-3 text-start"
-            @click="closeMobileNavigation"
-          >
-            <span class="theme-label-dark">夜间模式</span>
-            <span class="theme-label-light">日间模式</span>
-            <Icon
-              name="lucide:moon"
-              :size="20"
-              mode="svg"
-              class="theme-icon-moon text-brand-50"
-            />
-            <Icon
-              name="lucide:sun"
-              :size="20"
-              mode="svg"
-              class="theme-icon-sun text-brand-50"
-            />
-          </button>
           <div class="py-5" />
           <client-only>
             <div
