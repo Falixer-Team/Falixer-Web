@@ -12,7 +12,7 @@
       你的账户会受到限制，直到你
       <NuxtLink to="/auth/verify" class="text-link hover:!text-red-300"
         >验证邮箱地址</NuxtLink
-      >.
+      >。
     </div>
   </div>
 </template>

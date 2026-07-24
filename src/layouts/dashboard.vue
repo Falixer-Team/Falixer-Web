@@ -21,6 +21,7 @@
               <NuxtLink
                 v-if="user?.email_pending == null"
                 to="/app"
+                aria-label="用户中心"
                 class="text-default-font/50 hover:text-brand-50 flex-col items-center p-2 transition-colors hover:bg-neutral-800"
                 :class="{ 'text-default-font!': route.path == '/app' }"
               >
@@ -28,6 +29,7 @@
               </NuxtLink>
               <NuxtLink
                 to="/app/account"
+                aria-label="账户设置"
                 class="text-default-font/50 hover:text-brand-50 flex-col items-center p-2 transition-colors hover:bg-neutral-800"
                 :class="{
                   'text-default-font!':
@@ -53,6 +55,7 @@
               <NuxtLink
                 v-if="user?.email_pending == null"
                 to="/app/extensions"
+                aria-label="扩展管理"
                 class="text-default-font/50 hover:text-brand-50 flex-col items-center p-2 transition-colors hover:bg-neutral-800"
                 :class="{
                   'text-default-font!':
@@ -65,6 +68,7 @@
               <NuxtLink
                 v-if="user?.email_pending == null"
                 to="/app/stats"
+                aria-label="数据统计"
                 class="text-default-font/50 hover:text-brand-50 flex-col items-center p-2 transition-colors hover:bg-neutral-800"
                 :class="{
                   'text-default-font!':
@@ -105,6 +109,7 @@
           <NuxtLink
             v-if="user?.email_pending == null"
             to="/app"
+            aria-label="用户中心"
             class="text-default-font/50 hover:text-brand-50 focus:text-brand-50 flex w-full flex-col items-center py-4 outline-0 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
             :class="{ 'text-default-font!': route.path == '/app' }"
             @mousedown.prevent
@@ -113,6 +118,7 @@
           </NuxtLink>
           <NuxtLink
             to="/app/account"
+            aria-label="账户设置"
             class="text-default-font/50 hover:text-brand-50 focus:text-brand-50 flex w-full flex-col items-center py-4 outline-0 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
             :class="{
               'text-default-font!':
@@ -140,6 +146,7 @@
           <NuxtLink
             v-if="user?.email_pending == null"
             to="/app/extensions"
+            aria-label="扩展管理"
             class="text-default-font/50 hover:text-brand-50 focus:text-brand-50 flex w-full flex-col items-center py-4 outline-0 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
             :class="{
               'text-default-font!':
@@ -153,6 +160,7 @@
           <NuxtLink
             v-if="user?.email_pending == null"
             to="/app/stats"
+            aria-label="数据统计"
             class="text-default-font/50 hover:text-brand-50 focus:text-brand-50 flex w-full flex-col items-center py-4 outline-0 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
             :class="{
               'text-default-font!':
@@ -171,6 +179,7 @@
         >
           <button
             @click="logout"
+            aria-label="退出登录"
             class="apply-parent-focus flex cursor-pointer flex-col items-center border-t border-neutral-700 bg-neutral-950 py-4 outline-0 transition-colors hover:bg-red-950 hover:text-red-400 focus:bg-red-950 focus:text-red-400"
             @mousedown.prevent
           >

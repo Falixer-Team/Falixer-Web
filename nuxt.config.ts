@@ -5,6 +5,21 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-20',
   srcDir: 'src/',
   runtimeConfig: {
+    backendApiBase: process.env.BACKEND_API_BASE || 'http://localhost:8000/api',
+    turnstileSecret: process.env.TURNSTILE_SECRET_KEY || '',
+    smtp: {
+      host: process.env.SMTP_HOST || '',
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: process.env.SMTP_SECURE === 'true',
+      user: process.env.SMTP_USER || '',
+      pass: process.env.SMTP_PASS || '',
+      from: process.env.SMTP_FROM || '',
+    },
+    emailCode: {
+      expiresInSeconds: Number(process.env.EMAIL_CODE_EXPIRES_IN || 600),
+      resendInSeconds: Number(process.env.EMAIL_CODE_RESEND_IN || 60),
+      maxAttempts: Number(process.env.EMAIL_CODE_MAX_ATTEMPTS || 5),
+    },
     public: {
       licenseApiBase:
         process.env.NUXT_PUBLIC_LICENSE_API_BASE ||

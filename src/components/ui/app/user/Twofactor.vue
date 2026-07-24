@@ -1,19 +1,19 @@
 <template>
   <div class="flex flex-col items-center justify-center bg-neutral-950 p-4">
     <ElementsInlinecard v-if="error == 'enable-error'" class="mb-4">
-      Uh oh, couldn't initialize 2FA. Please try again later.
+      无法初始化双重验证，请稍后重试。
     </ElementsInlinecard>
     <div class="flex flex-col items-center py-4">
       <template v-if="user?.totp_enabled">
         <Icon name="pixelarticons:lock" :size="32" mode="svg" />
         <br />
         <p class="max-w-100 chrome:-mt-3 my-3 text-center">
-          You've enabled two factor authentication! You can disable it below.
+          双重验证已启用，你的账户获得了额外保护。
         </p>
         <ElementsButton
           @click="modalOpen.disable_2fa = true"
           color="danger"
-          label="Disable 2FA"
+          label="关闭双重验证"
           :disabled="loading"
         />
       </template>
@@ -21,12 +21,11 @@
         <Icon name="pixelarticons:lock-open" :size="32" mode="svg" />
         <br />
         <p class="max-w-100 my-3 text-center">
-          You haven't enabled two factor authentication yet! To keep your
-          account secure, set it up below.
+          你尚未启用双重验证。建议立即设置，以提高账户安全性。
         </p>
         <ElementsButton
           @click="handleEnable"
-          label="Enable 2FA"
+          label="启用双重验证"
           :disabled="loading"
         />
       </template>
@@ -36,7 +35,7 @@
   <ElementsModal
     :is-open="modalOpen.enable_2fa"
     :closable="false"
-    title="Set up 2FA"
+    title="设置双重验证"
     @close="modalOpen.enable_2fa = false"
   >
     <template #default>
@@ -53,10 +52,7 @@
           </div>
         </div>
         <div class="space-y-2">
-          <p>
-            <b>Scan the QR code with your two factor authentication app</b> or
-            use the credential below.
-          </p>
+          <p>使用身份验证器应用<b>扫描二维码</b>，或手动输入下方密钥。</p>
           <div class="rounded-2xl border border-neutral-700 p-2 font-mono">
             <span class="wrap-anywhere text-wrap">
               {{ enableOtpData?.secret }}
@@ -68,13 +64,13 @@
 
     <template #footer>
       <ElementsButton
-        label="Cancel"
+        label="取消"
         color="danger"
         class="w-full md:w-auto"
         @click="modalOpen.enable_2fa = false"
       />
       <ElementsButton
-        label="Continue"
+        label="继续"
         class="order-first w-full md:order-[unset] md:w-auto"
         @click="
           () => {
@@ -89,7 +85,7 @@
   <ElementsModal
     :is-open="modalOpen.confirm_2fa"
     :closable="false"
-    title="Set up 2FA"
+    title="确认双重验证"
     @close="
       () => {
         modalOpen.confirm_2fa = false
@@ -100,14 +96,10 @@
     <template #default>
       <div class="space-y-4">
         <ElementsInlinecard v-if="error == 'confirm-error'">
-          An error occurred. Make sure you used the correct password and 2FA
-          code.
+          验证失败，请检查账户密码和动态验证码。
         </ElementsInlinecard>
 
-        <p>
-          Provide the 2FA code generated earlier and your account password to
-          apply your changes.
-        </p>
+        <p>输入身份验证器生成的动态验证码和账户密码以完成设置。</p>
 
         <ElementsFormInput
           v-model="form.code"
@@ -117,7 +109,7 @@
           :required="true"
           leading-icon="memory:shield"
           autocomplete="one-time-code"
-          placeholder="2FA code"
+          placeholder="6 位动态验证码"
           :disabled="loading"
           @validate="
             (isValid: boolean) => handleFieldValidation('code', isValid)
@@ -132,7 +124,7 @@
           :required="true"
           leading-icon="memory:key"
           autocomplete="current-password"
-          placeholder="Password"
+          placeholder="账户密码"
           :disabled="loading"
           @validate="
             (isValid: boolean) => handleFieldValidation('password', isValid)
@@ -143,7 +135,7 @@
 
     <template #footer>
       <ElementsButton
-        label="Back"
+        label="返回"
         class="w-full md:w-auto"
         @click="
           () => {
@@ -158,7 +150,7 @@
           fieldValidation.password == false ||
           loading
         "
-        label="Enable 2FA"
+        label="确认启用"
         class="order-first w-full md:order-[unset] md:w-auto"
         @click="handleConfirm"
       />
@@ -167,14 +159,13 @@
 
   <ElementsModal
     :is-open="modalOpen.recovery_codes"
-    title="Recovery codes"
+    title="恢复代码"
     @close="modalOpen.recovery_codes = false"
   >
     <template #default>
       <div class="space-y-4">
         <p>
-          2FA has been enabled on your account. Below is a list of recovery
-          codes in case you lose your authenticator, save them somewhere secure!
+          双重验证已启用。请将恢复代码保存在安全位置；身份验证器不可用时可使用它们登录。
         </p>
 
         <div class="rounded-2xl border border-neutral-700 p-2 font-mono">
@@ -187,12 +178,12 @@
 
     <template #footer>
       <ElementsButton
-        label="Close"
+        label="关闭"
         class="w-full md:w-auto"
         @click="modalOpen.recovery_codes = false"
       />
       <ElementsButton
-        label="Download codes"
+        label="下载恢复代码"
         class="order-first w-full md:order-[unset] md:w-auto"
         @click="handleDownloadRecoveryCodes"
       />
@@ -201,20 +192,16 @@
 
   <ElementsModal
     :is-open="modalOpen.disable_2fa"
-    title="Disable 2FA"
+    title="关闭双重验证"
     @close="modalOpen.disable_2fa = false"
   >
     <template #default>
       <div class="space-y-4">
         <ElementsInlinecard v-if="error == 'disable-error'">
-          An error occurred. Make sure you used the correct password and 2FA
-          code.
+          验证失败，请检查账户密码和动态验证码。
         </ElementsInlinecard>
 
-        <p>
-          Disabling two factor authentication can pose additional risks to your
-          account. Consider leaving it enabled.
-        </p>
+        <p>关闭双重验证会降低账户安全性，建议保持启用。</p>
 
         <ElementsFormInput
           v-model="form.code"
@@ -224,7 +211,7 @@
           :required="true"
           leading-icon="memory:shield"
           autocomplete="one-time-code"
-          placeholder="2FA code"
+          placeholder="6 位动态验证码"
           :disabled="loading"
           @validate="
             (isValid: boolean) => handleFieldValidation('code', isValid)
@@ -239,7 +226,7 @@
           :required="true"
           leading-icon="memory:key"
           autocomplete="current-password"
-          placeholder="Password"
+          placeholder="账户密码"
           :disabled="loading"
           @validate="
             (isValid: boolean) => handleFieldValidation('password', isValid)
@@ -250,7 +237,7 @@
 
     <template #footer>
       <ElementsButton
-        label="Cancel"
+        label="取消"
         class="w-full md:w-auto"
         @click="modalOpen.disable_2fa = false"
       />
@@ -260,7 +247,7 @@
           fieldValidation.password == false ||
           loading
         "
-        label="Disable 2FA"
+        label="确认关闭"
         color="danger"
         class="order-first w-full md:order-[unset] md:w-auto"
         @click="handleDisable"
@@ -307,12 +294,12 @@ const handleEnable = async () => {
     enableOtpData.value = await $fetch(`/api/user/two-factor`, {
       method: 'GET',
     })
+    modalOpen.value.enable_2fa = true
   } catch {
     error.value = 'enable-error'
-    throw console.error("Couldn't get 2fa data, try again later.")
+    console.error('无法获取双重验证数据，请稍后重试。')
   } finally {
     loading.value = false
-    modalOpen.value.enable_2fa = true
   }
 }
 
@@ -324,19 +311,15 @@ const handleConfirm = async () => {
       method: 'POST',
       body: form.value,
     })
-  } catch {
-    loading.value = false
-    error.value = 'confirm-error'
-    throw console.error("Couldn't enable 2fa, try again later.")
-  } finally {
     await initializeAuth()
-    loading.value = false
     modalOpen.value.confirm_2fa = false
     modalOpen.value.recovery_codes = true
-    form.value = {
-      password: '',
-      code: '',
-    }
+    form.value = { password: '', code: '' }
+  } catch {
+    error.value = 'confirm-error'
+    console.error('无法启用双重验证，请稍后重试。')
+  } finally {
+    loading.value = false
   }
 }
 
@@ -348,28 +331,24 @@ const handleDisable = async () => {
       method: 'DELETE',
       body: form.value,
     })
-  } catch {
-    loading.value = false
-    error.value = 'disable-error'
-    throw console.error("Couldn't disable 2fa, try again later.")
-  } finally {
     await initializeAuth()
-    loading.value = false
     modalOpen.value.disable_2fa = false
-    form.value = {
-      password: '',
-      code: '',
-    }
+    form.value = { password: '', code: '' }
+  } catch {
+    error.value = 'disable-error'
+    console.error('无法关闭双重验证，请稍后重试。')
+  } finally {
+    loading.value = false
   }
 }
 
 const handleDownloadRecoveryCodes = async () => {
-  var blob = new Blob(
+  const blob = new Blob(
     [
-      `2FA recovery codes for blueprint.zip, save them somewhere secure.\n\n${confirmOtpData.value?.recovery_codes.join('\n')}`,
+      `Falixer 双重验证恢复代码，请妥善保存。\n\n${confirmOtpData.value?.recovery_codes.join('\n')}`,
     ],
     { type: 'text/plain;charset=utf-8' }
   )
-  saveAs(blob, 'blueprint-recovery-codes.txt')
+  saveAs(blob, 'falixer-双重验证恢复代码.txt')
 }
 </script>

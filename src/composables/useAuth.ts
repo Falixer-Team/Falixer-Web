@@ -16,6 +16,15 @@ export const useAuth = () => {
     authState.value.checkpoint.authType = undefined
   }
 
+  const parseErrors = (error: any): ApiError =>
+    error?.response?._data?.errors ||
+    error?.data?.errors ||
+    error?.errors || [
+      error?.data?.statusMessage ||
+        error?.statusMessage ||
+        '请求失败，请稍后重试',
+    ]
+
   const login = async (user: string, password: string, captcha: string) => {
     try {
       const data: {
@@ -47,11 +56,7 @@ export const useAuth = () => {
         throw data
       }
     } catch (error: any) {
-      if (error.response._data.errors) {
-        throw error.response._data.errors
-      } else if (error.errors) {
-        throw error.errors
-      }
+      throw parseErrors(error)
     }
   }
 
@@ -78,11 +83,7 @@ export const useAuth = () => {
         throw data
       }
     } catch (error: any) {
-      if (error.response._data.errors) {
-        throw error.response._data.errors
-      } else if (error.errors) {
-        throw error.errors
-      }
+      throw parseErrors(error)
     }
   }
 
@@ -90,11 +91,12 @@ export const useAuth = () => {
     email: string,
     password: string,
     name: string,
-    captcha: string
+    captcha: string,
+    verificationToken: string
   ) => {
     try {
       const data: { user?: FullUser; errors?: ApiError } = await $fetch(
-        '/api/auth/register',
+        '/_falixer-auth/register',
         {
           method: 'POST',
           body: {
@@ -102,6 +104,7 @@ export const useAuth = () => {
             email,
             password,
             captcha,
+            verification_token: verificationToken,
           },
         }
       )
@@ -114,11 +117,7 @@ export const useAuth = () => {
         throw data
       }
     } catch (error: any) {
-      if (error.response._data.errors) {
-        throw error.response._data.errors
-      } else if (error.errors) {
-        throw error.errors
-      }
+      throw parseErrors(error)
     }
   }
 

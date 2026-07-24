@@ -6,11 +6,8 @@
       class="md:min-h-55 flex flex-col divide-y divide-neutral-700 border-b border-neutral-700 md:border-b-0"
     >
       <div class="space-y-2 p-4">
-        <h2>Devices</h2>
-        <p>
-          This is a list of devices that are currently signed in to your Falixer
-          account. You can deauthorize devices by clicking them.
-        </p>
+        <h2>登录设备</h2>
+        <p>以下是当前登录 Falixer 的设备。点击非当前设备即可撤销其会话。</p>
       </div>
       <div class="bg-stripes hidden h-full md:block" />
       <div class="flex items-center justify-between">
@@ -24,8 +21,7 @@
         <client-only>
           <div class="overflow-auto p-4">
             <span class="text-nowrap">
-              Sessions {{ pageFirstSession }}-{{ pageLastSession }}
-              of
+              会话 {{ pageFirstSession }}–{{ pageLastSession }}，共
               {{ data?.sessions?.total }}
             </span>
           </div>
@@ -70,7 +66,7 @@
           </div>
           <ElementsButtonSmall
             v-if="!session.is_using"
-            label="Forget device"
+            label="移除设备"
             class="group-hover:text-brand-50 group-hover:bg-neutral-800"
           />
         </div>
@@ -79,11 +75,9 @@
         >
           {{ session.user_agent }}
         </p>
-        <p v-if="session.is_using" class="text-brand-50">
-          Your current session
-        </p>
+        <p v-if="session.is_using" class="text-brand-50">当前会话</p>
         <p v-else>
-          Last used <NuxtTime :datetime="session.last_used" relative />
+          上次使用：<NuxtTime :datetime="session.last_used" relative />
         </p>
       </div>
       <div
@@ -91,7 +85,7 @@
         class="flex flex-col items-center justify-center gap-1 border-t border-neutral-700 p-4"
       >
         <Icon name="pixelarticons:devices" :size="32" />
-        <p>New devices will show up here..</p>
+        <p>新的登录设备会显示在这里。</p>
       </div>
     </div>
   </div>

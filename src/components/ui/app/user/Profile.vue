@@ -4,8 +4,8 @@
   >
     <div class="divide-y divide-neutral-700">
       <div class="space-y-2 p-4">
-        <h2>Profile</h2>
-        <p>Update your Falixer account information and email address.</p>
+        <h2>个人资料</h2>
+        <p>更新你的 Falixer 账户信息和邮箱地址。</p>
       </div>
       <div class="bg-stripes hidden h-full md:block" />
     </div>
@@ -13,8 +13,8 @@
       <div class="grid grid-cols-1 gap-4 p-4 xl:grid-cols-2">
         <ElementsFormInput
           v-model="profileForm.name"
-          label="Display name"
-          description="Your display name, displayed side-wide and should be unique."
+          label="显示名称"
+          description="显示在站内和公开主页上的唯一名称。"
           name="name"
           type="text"
           :rules="[
@@ -34,13 +34,13 @@
         />
         <ElementsFormInput
           v-model="profileForm.pronouns"
-          label="Pronouns"
-          description="Pronouns are displayed on your public profile, joke pronouns are not allowed."
+          label="称谓"
+          description="称谓会显示在你的公开个人主页上。"
           name="pronouns"
           type="text"
           :rules="[validationRules.pronouns(), validationRules.maxLength(22)]"
           leading-icon="memory:tag-text"
-          placeholder="they/them"
+          placeholder="例如：TA"
           :disabled="loading"
           @validate="
             (isValid: boolean) => handleFieldValidation('pronouns', isValid)
@@ -48,13 +48,13 @@
         />
         <ElementsFormInput
           v-model="accountForm.email"
-          label="Email address"
-          description="The email address associated with your Falixer account."
+          label="邮箱地址"
+          description="与你的 Falixer 账户关联的邮箱地址。修改后需要重新验证。"
           name="email"
           type="email"
           :rules="[validationRules.email(), validationRules.required()]"
           leading-icon="memory:email"
-          placeholder="byte@blueprint.zip"
+          placeholder="name@example.com"
           :required="true"
           :disabled="loading"
           @validate="
@@ -63,8 +63,8 @@
         />
         <ElementsFormInput
           v-model="profileForm.support"
-          label="Support URL"
-          description="Link for users to get product support, in case you publish extensions."
+          label="支持链接"
+          description="发布扩展后，用户可通过此链接获取支持。"
           name="support"
           type="url"
           :rules="[validationRules.url()]"
@@ -87,7 +87,7 @@
         type="submit"
         class="disabled:text-default-font/40 hover:not-disabled:text-brand-50 hover:not-disabled:bg-neutral-900 flex w-full cursor-pointer items-center justify-between p-4 py-3 transition-colors disabled:cursor-not-allowed"
       >
-        <span class="text-xl font-semibold"> Save changes </span>
+        <span class="text-xl font-semibold">保存更改</span>
         <Icon name="memory:floppy-disk" mode="svg" :size="24" />
       </button>
     </form>

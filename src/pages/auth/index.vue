@@ -4,24 +4,20 @@
     class="w-full divide-y divide-neutral-700 border-y border-neutral-700"
   >
     <div class="p-4">
-      <h1 class="text-4xl!">Welcome back!</h1>
+      <h1 class="text-4xl!">欢迎回来</h1>
     </div>
     <div class="space-y-4 p-4">
       <ElementsInlinecard
         v-if="errors?.includes('invalid username or password')"
       >
-        Invalid email or password. Double-check you've submitted the correct
-        info or
-        <NuxtLink to="/auth/forgot" class="text-link"
-          >recover your account here</NuxtLink
-        >.
+        邮箱或密码不正确，请检查输入，或
+        <NuxtLink to="/auth/forgot" class="text-link">找回账户</NuxtLink>.
       </ElementsInlinecard>
       <ElementsInlinecard v-else-if="errors">
-        An unknown error occurred.
+        请求失败，请稍后重试。
       </ElementsInlinecard>
       <ElementsInlinecard v-if="reset">
-        Your password has been reset successfully. You can now sign in with your
-        new password.
+        密码已重置，请使用新密码登录。
       </ElementsInlinecard>
 
       <ElementsFormInput
@@ -32,7 +28,7 @@
         :required="true"
         leading-icon="memory:email"
         autocomplete="email"
-        placeholder="Email address"
+        placeholder="邮箱地址"
         :disabled="loading || checkpointData.authType == 'two_factor_required'"
         @validate="
           (isValid: boolean) => handleFieldValidation('email', isValid)
@@ -46,7 +42,7 @@
         :required="true"
         leading-icon="memory:key"
         autocomplete="current-password"
-        placeholder="Password"
+        placeholder="密码"
         :disabled="loading || checkpointData.authType == 'two_factor_required'"
         @validate="
           (isValid: boolean) => handleFieldValidation('password', isValid)
@@ -61,7 +57,7 @@
         :required="true"
         leading-icon="memory:shield"
         autocomplete="one-time-code"
-        placeholder="2FA code"
+        placeholder="双重验证代码"
         :disabled="loading"
         @validate="(isValid: boolean) => handleFieldValidation('code', isValid)"
       />
@@ -70,13 +66,11 @@
         v-if="checkpointData.authType == 'two_factor_required'"
         class="text-default-font/50"
       >
-        Use your 6-digit one time password or a 2FA recovery code.
+        输入 6 位动态验证码或恢复代码。
       </span>
       <span v-else class="text-default-font/50">
-        Forgot your password and/or lost access?
-        <NuxtLink to="/auth/forgot" class="text-link">
-          Recover your account here
-        </NuxtLink>
+        忘记密码或无法访问账户？
+        <NuxtLink to="/auth/forgot" class="text-link"> 找回账户 </NuxtLink>
       </span>
     </div>
     <div
@@ -95,7 +89,7 @@
         class="text-default-font focus:text-brand-50 flex w-full cursor-pointer items-center justify-between bg-neutral-950 px-4 py-3 outline-0 transition-colors hover:bg-neutral-900 focus:bg-neutral-900"
         @mousedown.prevent="handleLogin"
       >
-        <span class="text-xl font-semibold"> Continue </span>
+        <span class="text-xl font-semibold">继续</span>
         <Icon name="memory:chevron-right" mode="svg" :size="24" />
       </button>
       <NuxtLink
@@ -111,7 +105,7 @@
           class="text-default-font group-focus:text-brand-50 hover:text-brand-50 w-full cursor-pointer text-nowrap bg-neutral-950 px-4 py-3 text-left text-xl font-semibold transition-colors hover:bg-neutral-900 group-focus:bg-neutral-900 md:w-auto"
           @mousedown.prevent
         >
-          Authenticate with GitHub
+          使用 GitHub 登录
         </button>
       </NuxtLink>
     </div>

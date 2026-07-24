@@ -4,12 +4,10 @@
   >
     <div class="divide-y divide-neutral-700">
       <div class="space-y-2 p-4">
-        <h2>Password</h2>
+        <h2>密码安全</h2>
         <p>
-          Change your account's password.
-          <NuxtLink to="/auth/forgot" class="text-link"
-            >Forgot your password?</NuxtLink
-          >
+          定期更新账户密码可提升安全性。
+          <NuxtLink to="/auth/forgot" class="text-link">忘记密码？</NuxtLink>
         </p>
       </div>
       <div class="bg-stripes hidden h-full md:block" />
@@ -18,15 +16,15 @@
       <div class="space-y-4 p-4">
         <ElementsFormInput
           v-model="passwordForm.password"
-          label="Password"
-          description="The password you currently use to sign in."
+          label="当前密码"
+          description="你目前用于登录的密码。"
           name="password"
           type="password"
           :rules="[validationRules.required()]"
           :required="true"
           leading-icon="memory:key"
           autocomplete="current-password"
-          placeholder="Password"
+          placeholder="当前密码"
           :disabled="loading"
           @validate="
             (isValid: boolean) => handleFieldValidation('password', isValid)
@@ -35,14 +33,14 @@
         <div class="grid grid-cols-1 gap-4 xl:grid-cols-2">
           <ElementsFormInput
             v-model="passwordForm.new_password"
-            label="New password"
+            label="新密码"
             name="password"
             type="password"
             :rules="[validationRules.password(), validationRules.required()]"
             :required="true"
             leading-icon="memory:key"
             autocomplete="new-password"
-            placeholder="New password"
+            placeholder="新密码"
             :disabled="loading"
             @validate="
               (isValid: boolean) =>
@@ -51,13 +49,13 @@
           />
           <ElementsFormInput
             v-model="passwordForm.confirm_password"
-            label="Confirm new password"
+            label="确认新密码"
             name="password"
             type="password"
             :rules="[
               validationRules.exact(
                 passwordForm.new_password,
-                'Provided password must match \'New password\''
+                '两次输入的密码必须一致'
               ),
               validationRules.password(),
               validationRules.required(),
@@ -65,7 +63,7 @@
             :required="true"
             leading-icon="memory:rotate-counterclockwise"
             autocomplete="new-password"
-            placeholder="Confirm new password"
+            placeholder="再次输入新密码"
             :disabled="loading"
             @validate="
               (isValid: boolean) =>
@@ -89,7 +87,7 @@
           @click="passwordModalOpen = true"
           class="disabled:text-default-font/40 hover:not-disabled:text-brand-50 hover:not-disabled:bg-neutral-900 flex w-full cursor-pointer items-center justify-between p-4 py-3 transition-colors disabled:cursor-not-allowed"
         >
-          <span class="text-xl font-semibold"> Update password </span>
+          <span class="text-xl font-semibold">更新密码</span>
           <Icon name="memory:chevron-right" mode="svg" :size="24" />
         </button>
         <button type="submit" class="hidden" ref="submitButton" />
@@ -97,23 +95,21 @@
 
       <ElementsModal
         :is-open="passwordModalOpen"
-        title="Change password"
+        title="确认修改密码"
         @close="passwordModalOpen = false"
       >
-        <div class="mb-4">
-          Are you sure that you want to change your password?
-        </div>
+        <div class="mb-4">确定要修改密码吗？修改后请使用新密码登录。</div>
 
         <ElementsBlurredcredential :content="passwordForm.new_password" />
 
         <template #footer>
           <ElementsButton
-            label="Cancel"
+            label="取消"
             class="w-full md:w-auto"
             @click="passwordModalOpen = false"
           />
           <ElementsButton
-            label="Submit"
+            label="确认修改"
             type="submit"
             class="order-first w-full md:order-[unset] md:w-auto"
             @click="submitButton?.click()"
